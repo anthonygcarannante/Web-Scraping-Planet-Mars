@@ -75,8 +75,7 @@ def scrape():
     # Pull all divs in the HTML code with the class item. All hemisphere info is stored here
     results = soup.find_all('div', class_='item')
 
-    # Create blank dictionary and list
-    hemispheres_dict = {}
+    # Create blank list for dictionaries of pictures
     hemispheres_list = []
 
     # Iterate through all divs from above and pull the title and image link
@@ -86,9 +85,11 @@ def scrape():
         link = url + link_temp
         
         # Store in a dictionary and append each dictionary to a list
-        hemispheres_dict['title'] = title
-        hemispheres_dict['img_url'] = link
-        hemispheres_list.append(hemispheres_dict)
+        hemispheres_list.append({'title':title,'img_url':link})
+
+    # Print the list of dictionaries with the hemisphere information
+    print(hemispheres_list)
+
 
     # Quit the browser
     browser.quit()

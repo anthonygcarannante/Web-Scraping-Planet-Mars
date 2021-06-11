@@ -14,17 +14,60 @@
 
     <div class="jumbotron text-center">
       <h1>Mission to Mars</h1>
-      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Find a phone!</a></p>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scape for Mars</a></p>
     </div>
 
-    <!-- Phone Listings -->
-    <div class="row" id="phone-listings">
+    <!-- Display Mars Data -->
+    <div class="row" id="mars-news">
       <div class="col-md-12">
-        <h4 class="heading">
-            <a href="/scrape">Scrape Me!</a>
-        </h4>
+        <h2>Latest Mars News</h2>
+        <hr/>
+        <h4 class="heading">{{mars_information['Mars_News'][0].title}}</h4>
+        <p>{{mars_information['Mars_News'][0].paragraph}}</p>
         <small></small>
       </div>
+    </div>
+    
+    <div class="row" id="mars-photo">
+      <div class="col-md-8">
+        <h2>Mars Feature Image</h2>
+        <img src="{{mars_information['Mars_Photo']}}"/>
+      </div>
+      <div class="col-md-4">
+        <h2>Mars Statistics</h2>
+        <hr/>
+        {{mars_information['Mars_Stats']}}
+      </div>
+    </div>
+
+    <div class="row" id="mars-hemispheres">
+      <div class="col-md-12">
+        <h2>Mars Hemispheres</h2>
+        <hr/>
+        <div class="col-md-3">
+          <img src="{{mars_information['Mars_Hemispheres'][0].img_url}}"/>
+          <caption> {{mars_information['Mars_Hemispheres'][0].title}} </caption>
+        </div>
+        <div class="col-md-3">
+          <img src="{{mars_information['Mars_Hemispheres'][1].img_url}}"/>
+          <caption> {{mars_information['Mars_Hemispheres'][1].title}} </caption>
+        </div>
+        <div class="col-md-3">
+          <img src="{{mars_information['Mars_Hemispheres'][2].img_url}}"/>
+          <caption> {{mars_information['Mars_Hemispheres'][2].title}} </caption>
+        </div>
+        <div class="col-md-3">
+          <img src="{{mars_information['Mars_Hemispheres'][3].img_url}}"/>
+          <caption> {{mars_information['Mars_Hemispheres'][3].title}} </caption>
+        </div>
+        <hr/>
+      </div>
+    </div>
+
+    <div class="row" id="mars-hemispheres">
+      
+
+
     </div>
 
   </div>
