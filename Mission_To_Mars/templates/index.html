@@ -10,14 +10,16 @@
 </head>
 
 <body>
-  <div class="container">
-
-    <div class="jumbotron text-center">
+  <header>
+  <div class="container-fluid" style="background-color: lightgoldenrodyellow;">
+    <div class="jumbotron text-center" style="background-color: lightgray;">
       <h1>Mission to Mars</h1>
       <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scape for Mars</a></p>
     </div>
+  </div>  
+  </header>
 
-    <!-- Display Mars Data -->
+  <div class="container-fluid" style="background-color: orange;">
     <div class="row" id="mars-news">
       <div class="col-md-12">
         <h2>Latest Mars News</h2>
@@ -27,49 +29,44 @@
         <small></small>
       </div>
     </div>
-    
+  </div>
+  
+  <div class="container-fluid" style="background-color: darkorange;">
     <div class="row" id="mars-photo">
       <div class="col-md-8">
         <h2>Mars Feature Image</h2>
+        <hr/>
         <img src="{{mars_information['Mars_Photo']}}"/>
       </div>
       <div class="col-md-4">
         <h2>Mars Statistics</h2>
         <hr/>
-        {{mars_information['Mars_Stats']}}
+        {{mars_information['Mars_Stats'][0]|safe}}
+        <br>
+        {{mars_information['Mars_Stats'][1]|safe}}
+        <br>
       </div>
     </div>
+  </div>
 
+  <div class="container-fluid" style="background-color: tomato;">
     <div class="row" id="mars-hemispheres">
       <div class="col-md-12">
         <h2>Mars Hemispheres</h2>
         <hr/>
-        <div class="col-md-3">
-          <img src="{{mars_information['Mars_Hemispheres'][0].img_url}}"/>
-          <caption> {{mars_information['Mars_Hemispheres'][0].title}} </caption>
+        
+        {% for dict in mars_information['Mars_Hemispheres'] %}
+        <div class="col-md-3 text-center">
+          <div class="card text-center">
+            <img class="card-img-top text-center" id="scale_id" src="{{dict.img_url}}"/>
+          </div>
+          <br/>
+          <caption> {{dict.title}} </caption>
         </div>
-        <div class="col-md-3">
-          <img src="{{mars_information['Mars_Hemispheres'][1].img_url}}"/>
-          <caption> {{mars_information['Mars_Hemispheres'][1].title}} </caption>
-        </div>
-        <div class="col-md-3">
-          <img src="{{mars_information['Mars_Hemispheres'][2].img_url}}"/>
-          <caption> {{mars_information['Mars_Hemispheres'][2].title}} </caption>
-        </div>
-        <div class="col-md-3">
-          <img src="{{mars_information['Mars_Hemispheres'][3].img_url}}"/>
-          <caption> {{mars_information['Mars_Hemispheres'][3].title}} </caption>
-        </div>
+        {% endfor %}
         <hr/>
       </div>
     </div>
-
-    <div class="row" id="mars-hemispheres">
-      
-
-
-    </div>
-
   </div>
 </body>
 

@@ -60,8 +60,8 @@ def scrape():
     mars_df2 = mars_table[1]
 
     # Convert dataframes to HTML table string
-    html_table1 = mars_df1.to_html()
-    html_table2 = mars_df2.to_html()
+    html_table1 = mars_df1.to_html(index=False, header=False)
+    html_table2 = mars_df2.to_html(index=False, header=False)
     mars_html_list = [html_table1, html_table2]
 
     # Visit URL
@@ -81,15 +81,11 @@ def scrape():
     # Iterate through all divs from above and pull the title and image link
     for result in results:
         title = result.find('h3').text
-        link_temp = result.find('a')['href']
+        link_temp = result.find('img')['src']
         link = url + link_temp
         
         # Store in a dictionary and append each dictionary to a list
         hemispheres_list.append({'title':title,'img_url':link})
-
-    # Print the list of dictionaries with the hemisphere information
-    print(hemispheres_list)
-
 
     # Quit the browser
     browser.quit()
